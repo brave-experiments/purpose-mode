@@ -168,6 +168,15 @@ const removeYouTubeDistractions= () => {
                 "visibility": "hidden"
             });
         }
+
+        // YouTube premium event
+        const premiumEvent = $('yt-formatted-string[id="subtitle"]:contains("Premium membership")');
+        if(premiumEvent){
+            premiumEvent.closest('ytd-rich-section-renderer').css({
+                "display": "none",
+                "visibility": "hidden"
+            });
+        }
     }
     else if (currentPage.includes("www.youtube.com/watch?")){ // Watch page-only recommendations
         // video recommendation
