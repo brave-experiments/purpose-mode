@@ -29,7 +29,8 @@ const getContainer = () => new Promise((resolve) => {
     }
     else if (currentPage == "LinkedIn"){
         if(isHomePage()){
-            const y = $('main[aria-label]');
+            // const y = $('main[aria-label]');
+            const y = $('div.application-outlet');
             if (y.length === 0) {
                 setTimeout(() => { resolve(getContainer()); }, 100);
                 return;
@@ -373,6 +374,14 @@ const removeFacebookDistractions = () => {
         "display": "none",
         "visibility": "hidden"
     });
+    // "New posts" push notification
+    const newPostsNotification = $('button:has(> div > span:contains("New posts"))');
+    if(newPostsNotification){
+        newPostsNotification.css({
+            "display": "none",
+            "visibility": "hidden"
+        });
+    }
 
     // "red dot" notifications for Messenger
     const messengerNotification = $('div[aria-label*="Messenger"][tabindex="-1"]');
@@ -568,7 +577,7 @@ const getCurrentPage = () => {
 
 const isHomePage = () => {
     const currentWindowURL = window.location.href;
-    if (currentWindowURL === "https://twitter.com/home" || 
+    if (currentWindowURL.includes("https://twitter.com/home") || 
         currentWindowURL === "https://www.facebook.com/" || 
         currentWindowURL === "https://www.youtube.com/" || 
         currentWindowURL === "https://www.linkedin.com/feed/"){
