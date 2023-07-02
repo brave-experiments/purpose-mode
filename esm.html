@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Questionnaire</title>
+    <link rel="stylesheet" href="mystyles.css">
+    <!-- <link rel="stylesheet" href="semantic.min.css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script src="semantic.min.js"></script> -->
+</head>
+
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    User Experience Questionnaire
+                </h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="section">
+            <div class="box">
+                <div class="container">
+                    <p class="content">
+                        <br>
+                        You are currently browsing [the site] [the site's logo].
+                        <br />
+                        Current time: <span id="ad_time"></span>
+                        <br />
+                    </p>
+                </div>
+            </div>
+            <div>
+                <div class="box">
+                    <p class="content">
+                        <br>
+                        1. Please briefly describe what you are currently doing on [the site]: <span style="color:red">*</span>
+                        <br />
+                    </p>
+                    <input class="input" type="q_activity" id="q_activity" required="required"
+                    />
+                </div>
+                <div class="box">
+                    <p class="content">
+                        <br>
+                        2. Which of the following best describes your purpose for browsing [the site] at the moment:<span
+                            style="color:red">*</span>
+                        <br />
+                    </p>
+                    <div class="control">
+                        <div class="select">
+                            <select id="q_purpose">
+                                <option></option>
+                                <option
+                                    value="Finding">
+                                    <b>Finding</b>: Looking for specific facts or information (e.g., weather, location)
+                                </option>
+                                <option
+                                    value="Information gathering">
+                                    <b>Researching/ Information gathering</b>: Researching some broader topic (e.g., job hunting, planning a vacation)
+                                </option>
+                                <option value="Browsing">
+                                    <b>Browsing</b>: Pure browsing out of personal or work-related interest with no specific goal in mind (e.g., for self's routine/habit/passing time/entertainment)</option>
+                                <option value="Communicating">
+                                    <b>Communicating</b>: (e.g., messaging, blogging and posting updates)</option>
+                                <option value="Others">
+                                    Others (Fill in the blank if you choose 'Others')</option>
+                            </select>
+                        </div>
+                        <p class="content is-small has-text-danger">
+                            <br \>
+                            Fill in the following blank if you choose 'Others':
+                        </p>
+                        <div class="content">
+                            <input class="input" id="q_purpose_others"
+                                placeholder="Fill in this blank if you choose 'Others'" disabled="true"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <p class="content">
+                        <br>
+                        3.1. How will you describe the distractions you feel right now when browsing [the site]:<span style="color:red">*</span>
+                        <br />
+                    </p>
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" value="Yes" name="q_distraction">
+                            I am distracted.
+                        </label>
+                        <label class="radio">
+                            <input type="radio" value="No" name="q_distraction">
+                            I am NOT distracted.
+                        </label>
+                    </div>
+                
+                    <p class="content">
+                        <br>
+                        3.2. Please explain what things about [the site] lead you to feel distracted or not distracted (based on your answer to Q3.1):
+                        <span style="color:red">*</span>
+                        <br />
+                    </p>
+                    <input class="input" type="q_explanation" id="q_explanation" required="required"
+                        />
+                </div>
+
+                <div class="box">
+                    <p class="content">
+                        <br>
+                        Reflecting on your current browsing experience on [the site]:
+                        <br />
+                    </p>
+
+                    <p class="content">
+                        <br>
+                        4.1 How much do you feel out of or in control?<span style="color:red">*</span>
+                        <br />
+                    </p>
+                    <div class="control">
+                        <nav class="level">
+                            <div class="level-item">
+                                <table class="table is-fullwidth has-text-centered">
+                                    <tbody>
+                                        <td>
+                                            <label class="radio">
+                                                1: Very out of control  <br>
+                                                <input type="radio" value="1" name="q_control">
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label class="radio">
+                                                2: Out of control <br>
+                                                <input type="radio" value="2" name="q_control">
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label class="radio">
+                                                3: Neither out of nor in control <br>
+                                                <input type="radio" value="3" name="q_control">
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label class="radio">
+                                                4: In control <br>
+                                                <input type="radio" value="4" name="q_control">
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label class="radio">
+                                                5: Very in control <br>
+                                                <input type="radio" value="5" name="q_control">
+                                            </label>
+                                        </td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </nav>
+                    </div>
+
+                    <p class="content">
+                        <br>
+                        4.2 How much do you feel dissatisfied or satisfied?<span style="color:red">*</span>
+                        <br />
+                    </p>
+                    <div class="control">
+                        <nav class="level">
+                            <div class="level-item">
+                                <table class="table is-fullwidth has-text-centered">
+                                    <tbody>
+                                        <td>
+                                            <label class="radio">
+                                                1: Very dissatisfied <br>
+                                                <input type="radio" value="1" name="q_satisfaction">
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label class="radio">
+                                                2: Dissatisfied <br>
+                                                <input type="radio" value="2" name="q_satisfaction">
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label class="radio">
+                                                3: Neither dissatisfied nor satisfied <br>
+                                                <input type="radio" value="3" name="q_satisfaction">
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label class="radio">
+                                                4: Satisfied <br>
+                                                <input type="radio" value="4" name="q_satisfaction">
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label class="radio">
+                                                5: Very satisfied <br>
+                                                <input type="radio" value="5" name="q_satisfaction">
+                                            </label>
+                                        </td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </nav>
+                    </div>
+
+                    <p class="content">
+                        <br>
+                        4.3 How much does the current browsing experience conflict with or support your personal goals?<span style="color:red">*</span>
+                        <br />
+                    </p>
+                    <div class="control">
+                        <nav class="level">
+                            <div class="level-item">
+                                <table class="table is-fullwidth has-text-centered">
+                                    <tbody>
+                                        <td>
+                                            <label class="radio">
+                                                1: Very in conflict <br>
+                                                <input type="radio" value="1" name="q_goal">
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label class="radio">
+                                                2: In conflict <br>
+                                                <input type="radio" value="2" name="q_goal">
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label class="radio">
+                                                3: Neither in conflict nor supported <br>
+                                                <input type="radio" value="3" name="q_goal">
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label class="radio">
+                                                4: Supported <br>
+                                                <input type="radio" value="4" name="q_goal">
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label class="radio">
+                                                5: Very supported <br>
+                                                <input type="radio" value="5" name="q_satisfaction">
+                                            </label>
+                                        </td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+
+                <button class="button is-primary" id="btn_submit">Submit</button>
+                </div>
+            </div>
+        <div id="app"></div>
+    </div>
+    <!-- <script src="esm.js"></script> -->
+</body>
+
+</html>
