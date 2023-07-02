@@ -53,3 +53,30 @@ function updateState(changes, area) {
     });
   }
 }
+
+var portFromCS;
+//connect to the port
+chrome.runtime.onConnect.addListener(connected);
+//connect function
+function connected(port) {
+  portFromCS = port;
+  //listen for message from content scripts
+  portFromCS.onMessage.addListener(function (m) {
+    console.log('new message: ', m);
+    if (m.type == 'greeting') {
+      console.log('In background script, received message from content script');
+      console.log(m.greeting);
+    }
+    //test notification
+    else if (m.type == "test notification") {
+      var timestamp = new Date().getTime();
+      var questionnaireNotification = "questionnaire-notification" + timestamp;
+      chrome.notifications.create(questionnaireNotification, {
+        "type": "basic",
+        "iconUrl": chrome.runtime.getURL("./icons/survey.png"),
+        "title": "You have a questionnaire to fill!",
+        "message": "Click this notification to answer the questionnaire.",
+      });
+    }
+  });
+}

@@ -50,3 +50,30 @@ function retrieveButtonState() {
     console.log("Set button state to: " + result.state);
   })
 }
+
+// message handling
+var myPort = chrome.runtime.connect({ name: 'port-from-cs' });
+
+//show menu
+function switchMenu() {
+  var dropdown_setting = document.getElementById("dropdown_setting");
+  var dropdown_setting_class = dropdown_setting.getAttribute('class');
+  if (dropdown_setting_class == "dropdown is-right") {
+    dropdown_setting.setAttribute('class', "dropdown is-right is-active");
+  }
+  else {
+    dropdown_setting.setAttribute('class', "dropdown is-right");
+  }
+}
+
+//test notification
+function testNotification() {
+  var message = {
+    'type': 'test notification',
+  };
+  myPort.postMessage(message);
+  document.getElementById('dropdown_setting').setAttribute('class', 'dropdown is-right');
+}
+
+document.getElementById('setting_trigger').addEventListener("click", switchMenu);
+document.getElementById('test_notification').addEventListener("click", testNotification);

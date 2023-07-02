@@ -2,28 +2,79 @@
   <head>
     <style>
     body {
-      width:300px;
-      height:200px;
+      width: 400px;
+      max-width: 100%;
+      position: relative;
+      vertical-align: middle;
     }
     </style>
+    <link rel="stylesheet" href="mystyles.css">
   </head>
 
   <body>
-
-    <fieldset class="multiswitch" data-theme="stoplight">
-      <legend>Purpose Mode</legend>
-      <div class="slide-container">
-        <input type="radio" name="stoplight" id="disabled" checked>
-        <label for="stoplight1">Off</label>
-        <input type="radio" name="stoplight" id="purpose_mode">
-        <label for="stoplight2">On</label>
-        <!-- <input type="radio" name="stoplight" id="reader_mode">
-        <label for="stoplight3">Reader Mode</label> -->
-        <!-- leave this "slide" -->
-        <a class="slide" aria-hidden="true"></a>
+    <section id="hero" class="hero is-small is-primary is-bold">
+      <div class="hero-body">
+        <div class="container has-text-right">
+          <div id="dropdown_setting" class="dropdown is-right">
+            <div class="dropdown-trigger">
+              <span>
+                <img id="setting_trigger" style="cursor:pointer;" src="./icons/settings.png" />
+              </span>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content has-text-centered">
+                <div class="dropdown-item">
+                  <p class="heading">ID</p> 
+                  <p id="userId">user id</p>
+                </div> 
+                <div class="dropdown-item">
+                  <button class="button is-small" id="test_notification">Test notification</button> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container has-text-centered">
+          <h1 class="title">
+            <p id="popup_title">Purpose Mode</p>
+          </h1>
+        </div>
       </div>
-    </fieldset>
-
+    </section>
+    <nav class="level is-mobile">
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Today Answered</p>
+          <p id="numTodayAnswered">0</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Total Answered</p>
+          <p id="numTotalAnswered">0</p>
+        </div>
+      </div>
+    </nav>
+    <nav class="level is-mobile">
+      <div class="level-item has-text-centered">
+        <button class="button is-info is-small" id="questionnaire">Questionnaire</button>
+      </div>
+      <div class="level-item has-text-centered">
+        <!-- <button class="button is-success is-small" id="switchButton">On</button> -->
+        <fieldset class="multiswitch" data-theme="stoplight">
+          <div class="slide-container">
+            <input type="radio" name="stoplight" id="disabled" checked>
+            <label for="stoplight1">Off</label>
+            <input type="radio" name="stoplight" id="purpose_mode">
+            <label for="stoplight2">On</label>
+            <!-- <input type="radio" name="stoplight" id="reader_mode">
+            <label for="stoplight3">Reader Mode</label> -->
+            <!-- leave this "slide" -->
+            <a class="slide" aria-hidden="true"></a>
+          </div>
+        </fieldset>
+      </div>
+    </nav>
   </body>
   <script src="ui.js"></script>
 </html>
