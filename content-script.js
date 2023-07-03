@@ -401,7 +401,7 @@ const removeFacebookDistractions = () => {
 
     /* Recommendation removal */
     // “Stories” and “Reels” videos on the top
-    const storiesBar = $('div[aria-label="Stories"]').parent().parent().parent().parent().parent().parent();
+    const storiesBar = $('div[aria-label="Stories"]').parent().parent().parent();
     if(storiesBar){
         storiesBar.css({
             "display": "none",
@@ -423,7 +423,7 @@ const removeFacebookDistractions = () => {
         "visibility": "hidden"
     });
     // Suggested groups
-    const groupRec = $('span:contains("Suggested groups")').parent().parent().parent().parent().parent();
+    const groupRec = $('span:contains("Suggested groups")').parent().parent();
     if(groupRec){
         groupRec.css({
             "display": "none",
@@ -449,35 +449,40 @@ const removeFacebookDistractions = () => {
         });
     }
     // Buttons on top of the page
-    const homeButton = $('a[aria-label="Home"]').parent().parent().parent(); // home button
+    // const homeButton = $('a[aria-label="Home"]').parent().parent().parent(); // home button
+    const homeButton = $('li > span > div > a[aria-label="Home"]');
     if(homeButton){
         homeButton.css({
             "display": "none",
             "visibility": "hidden"
         });
     }
-    const watchButton = $('a[aria-label="Watch"]').parent().parent().parent(); // watch button
+    // const watchButton = $('a[aria-label="Watch"]').parent().parent().parent(); // watch button
+    const watchButton = $('li > span > div > a[aria-label="Watch"]');
     if(watchButton){
         watchButton.css({
             "display": "none",
             "visibility": "hidden"
         });
     }
-    const marketButton = $('a[aria-label="Marketplace"]').parent().parent().parent(); // marketplace button
+    // const marketButton = $('a[aria-label="Marketplace"]').parent().parent().parent(); // marketplace button
+    const marketButton = $('li > span > div > a[aria-label="Marketplace"]');
     if(marketButton){
         marketButton.css({
             "display": "none",
             "visibility": "hidden"
         });
     }
-    const groupsButton = $('a[aria-label="Groups"]').parent().parent().parent(); // groups button
+    // const groupsButton = $('a[aria-label="Groups"]').parent().parent().parent(); // groups button
+    const groupsButton = $('li > span > div > a[aria-label="Groups"]');
     if(groupsButton){
         groupsButton.css({
             "display": "none",
             "visibility": "hidden"
         });
     }
-    const gameButton = $('a[aria-label="Gaming"]').parent().parent().parent(); // gaming button
+    // const gameButton = $('a[aria-label="Gaming"]').parent().parent().parent(); // gaming button
+    const gameButton = $('li > span > div > a[aria-label="Gaming"]');
     if(gameButton){
         gameButton.css({
             "display": "none",
