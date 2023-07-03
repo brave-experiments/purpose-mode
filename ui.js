@@ -75,5 +75,33 @@ function testNotification() {
   document.getElementById('dropdown_setting').setAttribute('class', 'dropdown is-right');
 }
 
+function openQuestionnaire(e) {
+  /*insert fake data for demo purpose*/
+  //get current time
+  var date = new Date(Date.now());
+  var current_time = date.toString().replace(/ \(.*\)/ig, '');//.replace(/(-|:|\.\d*)/g,'');//format: yyyyMMddThhmmssZ eg:19930728T183907Z
+  var esm = {};
+  esm['esm_site'] = "Twitter";
+  esm['esm_time'] = current_time;
+  
+  var distractions = {};
+  distractions['has_infinite_scrolling'] = 0;
+  distractions['has_autoplay'] = 0;
+  distractions['has_notifications'] = 0;
+  distractions['has_recommendations'] = 0;
+  distractions['has_cluttered_UI'] = 0;
+  distractions['has_colorfulness'] = 0;
+  esm['distractions'] = distractions;
+  chrome.storage.local.set({"sampled_esm": esm}).then(
+    console.log(esm)
+  );
+  /*END*/
+  
+  // open ESM interface
+  var message = { type: "open questionnaire" };
+  myPort.postMessage(message);
+}
+
 document.getElementById('setting_trigger').addEventListener("click", switchMenu);
 document.getElementById('test_notification').addEventListener("click", testNotification);
+document.getElementById('questionnaire').addEventListener("click", openQuestionnaire);

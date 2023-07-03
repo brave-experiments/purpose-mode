@@ -1,3 +1,5 @@
+'use strict';
+
 // Our extension only supports the following sites.
 const supportedSites = [
   "www.facebook.com",
@@ -77,6 +79,13 @@ function connected(port) {
         "title": "You have a questionnaire to fill!",
         "message": "Click this notification to answer the questionnaire.",
       });
+    }
+    //open new questionnaire
+    else if (m.type == "open questionnaire") {
+      console.log("open questionnaire");
+      // open ESM questionnaire page
+      chrome.tabs.create({ url: chrome.runtime.getURL('esm.html') });
+
     }
   });
 }
