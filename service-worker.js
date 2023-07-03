@@ -8,6 +8,13 @@ const supportedSites = [
   "www.linkedin.com"
 ];
 
+// show welcome page upon installation
+chrome.runtime.onInstalled.addListener(function (details) {
+  if (details.reason === "install") {
+    chrome.tabs.create({ url: chrome.runtime.getURL('index.html') });
+  }
+});
+
 // Initialize storage variables at installation time.
 chrome.runtime.onInstalled.addListener(initStorageVars);
 // (Un)register content script and swap extension icon upon state change.
@@ -86,6 +93,11 @@ function connected(port) {
       // open ESM questionnaire page
       chrome.tabs.create({ url: chrome.runtime.getURL('esm.html') });
 
+    }
+    else if (m.type == 'start') {
+      //get user id
+      var user_id = m.user_id;
+      chrome.storage.local.set({ 'pid': user_id });
     }
   });
 }

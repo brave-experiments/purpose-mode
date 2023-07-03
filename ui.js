@@ -4,6 +4,16 @@ const states = [
   // "reader_mode"
 ];
 
+// update popup display information
+let text_id = document.getElementById('userId');
+let user_id = "";
+chrome.storage.local.get(['pid']).then(function (result) {
+  if (result.hasOwnProperty('pid')) {
+    user_id = result.pid;
+    text_id.innerText = user_id;
+  }
+});
+
 // If the user enables Purpose Mode while on a page, inject the content script
 // into the current page.
 document.getElementById("purpose_mode").addEventListener("click", onExtEnable);
