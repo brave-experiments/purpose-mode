@@ -404,10 +404,12 @@ const removeFacebookDistractions = () => {
     /* Notifications removal */
     // "red dot" update notifications
     const updateNotification = $('div[aria-label*="Notifications"][tabindex="-1"]');
-    updateNotification.css({
-        "display": "none",
-        "visibility": "hidden"
-    });
+    if(updateNotification){
+        updateNotification.css({
+            "display": "none",
+            "visibility": "hidden"
+        });
+    }
     // "New posts" push notification
     const newPostsNotification = $('button:has(> div > span:contains("New posts"))');
     if(newPostsNotification){
@@ -419,10 +421,12 @@ const removeFacebookDistractions = () => {
 
     // "red dot" notifications for Messenger
     const messengerNotification = $('div[aria-label*="Messenger"][tabindex="-1"]');
-    messengerNotification.css({
-        "display": "none",
-        "visibility": "hidden"
-    });
+    if(messengerNotification){
+        messengerNotification.css({
+            "display": "none",
+            "visibility": "hidden"
+        });
+    }
 
     /* Recommendation removal */
     // “Stories” and “Reels” videos on the top
@@ -443,10 +447,12 @@ const removeFacebookDistractions = () => {
     }
     // "People You May Know"
     const friendRec = $('span:contains("People You May Know")').parent().parent().parent().parent().parent();
-    friendRec.css({
-        "display": "none",
-        "visibility": "hidden"
-    });
+    if(friendRec){
+        friendRec.css({
+            "display": "none",
+            "visibility": "hidden"
+        });
+    }
     // Suggested groups
     const groupRec = $('span:contains("Suggested groups")').parent().parent();
     if(groupRec){
