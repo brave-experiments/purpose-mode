@@ -430,9 +430,17 @@ const removeFacebookDistractions = () => {
 
     /* Recommendation removal */
     // “Stories” and “Reels” videos on the top
-    const storiesBar = $('div[aria-label="Stories"]').parent().parent().parent();
+    const storiesBar = $('div[aria-label="Stories"]').parent().parent();
     if(storiesBar){
         storiesBar.css({
+            "display": "none",
+            "visibility": "hidden"
+        });
+    }
+    // “Stories” and “Reels” buttons
+    const storiesButton = $('div[role="tablist"]:has(> div > div > div > div > div > span:contains("Stories"))');
+    if(storiesButton){
+        storiesButton.css({
             "display": "none",
             "visibility": "hidden"
         });
@@ -481,7 +489,7 @@ const removeFacebookDistractions = () => {
     }
     // Buttons on top of the page
     // const homeButton = $('a[aria-label="Home"]').parent().parent().parent(); // home button
-    const homeButton = $('li > span > div > a[aria-label="Home"]');
+    const homeButton = $('a[aria-label="Home"]');
     if(homeButton){
         homeButton.css({
             "display": "none",
@@ -489,7 +497,7 @@ const removeFacebookDistractions = () => {
         });
     }
     // const watchButton = $('a[aria-label="Watch"]').parent().parent().parent(); // watch button
-    const watchButton = $('li > span > div > a[aria-label="Watch"]');
+    const watchButton = $('a[aria-label="Watch"]');
     if(watchButton){
         watchButton.css({
             "display": "none",
@@ -497,7 +505,7 @@ const removeFacebookDistractions = () => {
         });
     }
     // const marketButton = $('a[aria-label="Marketplace"]').parent().parent().parent(); // marketplace button
-    const marketButton = $('li > span > div > a[aria-label="Marketplace"]');
+    const marketButton = $('a[aria-label="Marketplace"]');
     if(marketButton){
         marketButton.css({
             "display": "none",
@@ -513,7 +521,7 @@ const removeFacebookDistractions = () => {
         });
     }
     // const gameButton = $('a[aria-label="Gaming"]').parent().parent().parent(); // gaming button
-    const gameButton = $('li > span > div > a[aria-label="Gaming"]');
+    const gameButton = $('a[aria-label="Gaming"]');
     if(gameButton){
         gameButton.css({
             "display": "none",
