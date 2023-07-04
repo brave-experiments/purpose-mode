@@ -1,7 +1,13 @@
 "use strict";
 
 const getContainer = () => new Promise((resolve) => {
-    if(currentPage == "Twitter"){
+    const currentWindowURL = window.location.href;
+    // on twitter autoplay setting page
+    if(currentWindowURL.includes("https://twitter.com/settings/autoplay")){
+        const y = document;
+        resolve(y);
+    }
+    else if(currentPage == "Twitter"){
         const x = $('section[aria-labelledby]');
         if (x.length === 0 || x.find("article").length === 0) {
             setTimeout(() => { resolve(getContainer()); }, 100);
@@ -93,8 +99,8 @@ const removeYouTubeDistractions= () => {
     }
 
     /* Recommendation removal */
-    const currentPage = window.top.location.href;
-    if(currentPage === "https://www.youtube.com/"){ // home page-only recommendations
+    const currentWindow = window.top.location.href;
+    if(currentWindow === "https://www.youtube.com/"){ // home page-only recommendations
         
         // recommendation tags on top of the page
         const recc_tag = $('div#scroll-container');
@@ -178,7 +184,7 @@ const removeYouTubeDistractions= () => {
             });
         }
     }
-    else if (currentPage.includes("www.youtube.com/watch?")){ // Watch page-only recommendations
+    else if (currentWindow.includes("www.youtube.com/watch?")){ // Watch page-only recommendations
         // video recommendation
         const relatedVideos = $('div#secondary-inner');
         if(relatedVideos){
@@ -196,7 +202,7 @@ const removeYouTubeDistractions= () => {
             });
         }
     }
-    else if (window.top.location.href.includes("results?search_query")){ // Search page-only recommendations
+    else if (currentWindow.includes("results?search_query")){ // Search page-only recommendations
         // "People also watched"
         const peopleAlsoWatched = $('span[id="title"]:contains("People also watched")');
         if(peopleAlsoWatched){
@@ -259,6 +265,25 @@ const removeYouTubeDistractions= () => {
 }
 
 const removeTwitterDistractions = () => {
+    // remove autoplay
+    if(window.top.location.href.includes("autoplay")){
+        // console.log("on the setting page");
+        const autoPlayToggle = $('input:radio[name="video_autoplay"]:nth(1)');
+        // console.log("Try to remove Twitter autoplay");
+        if(autoPlayToggle){
+            let toggleFlag = autoPlayToggle.is(':checked');
+            if(toggleFlag === false){
+                autoPlayToggle.parent().on('click', function (){
+                    if(!toggleFlag){
+                        toggleFlag = true;
+                        alert("Autoplay on Twitter has been turned off! To turn it back on, please go to the Purpose Mode setting.");
+                    }
+                 });
+                autoPlayToggle.parent().click();
+            }
+        }
+    }
+
     /*Clean feed view*/
     // "What's happening" column on the right.
     const col_what = $('div[aria-label="Timeline: Trending now"]');
@@ -497,7 +522,7 @@ const removeFacebookDistractions = () => {
             "visibility": "hidden"
         });
     });
-    const additionalMessage = $('div[aria-label*="additional chats"'); // additional chat boxes
+    const additionalMessage = $('div[aria-label*="additional chats"]'); // additional chat boxes
     if(additionalMessage){
         additionalMessage.css({
             "display": "none",

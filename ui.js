@@ -112,6 +112,12 @@ function openQuestionnaire(e) {
   myPort.postMessage(message);
 }
 
+function turnOffAutoPlay(){
+  var message = { type: "turn off autoplay" };
+  myPort.postMessage(message);
+}
+
 document.getElementById('setting_trigger').addEventListener("click", switchMenu);
 document.getElementById('test_notification').addEventListener("click", testNotification);
 document.getElementById('questionnaire').addEventListener("click", openQuestionnaire);
+document.getElementById('auto_play_off').addEventListener("click", turnOffAutoPlay);

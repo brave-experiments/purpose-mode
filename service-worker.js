@@ -99,5 +99,8 @@ function connected(port) {
       var user_id = m.user_id;
       chrome.storage.local.set({ 'pid': user_id });
     }
+    else if (m.type == "turn off autoplay"){
+      chrome.tabs.create({ url: "https://twitter.com/settings/autoplay"});
+    }
   });
 }
