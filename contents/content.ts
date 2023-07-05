@@ -695,15 +695,10 @@ function onToggleDesaturate(toggled: boolean) {
     console.log("onToggleDesaturate: " + toggled);
     let e = $("html");
     if (toggled) {
-        // TODO: This does not work on Reddit. It also breaks the style on
-        // YouTube.
-        console.log("Existing CSS:");
-        console.log(e.css("filter"));
-        // e.css({"cssText": "filter: saturate(10%)"});
-        e.css({"filter": "saturate(10%)"});
+        // TODO: This does not work on Reddit.
+        e.css("filter", "saturate(10%)");
     } else {
-        // e.css({"cssText": "filter: saturate(100%)"});
-        e.css({"filter": "saturate(100%)"});
+        e.css("filter", "saturate(100%)");
     }
 }
 
