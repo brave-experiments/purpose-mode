@@ -659,33 +659,6 @@ function IndexPopup() {
         padding: 16,
         width: "300px"
       }}>
-    <div id="hero">
-      <div>
-        <div className="has-text-right">
-          <div id="dropdown_setting" className="dropdown is-right">
-            <div className="dropdown-trigger">
-              <span>
-                {/* <img id="setting_trigger" style={{cursor:"pointer"}} src={setting} /> */}
-              </span>
-            </div>
-            <div className="dropdown-menu" id="dropdown-menu" role="menu">
-              <div className="dropdown-content has-text-centered">
-                <div className="dropdown-item">
-                  <p className="heading">ID</p> 
-                  <p id="userId">user id</p>
-                </div> 
-                <div className="dropdown-item">
-                  <button className="button is-small" id="test_notification">Test notification</button> 
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="has-text-centered">
-          <h2 className="title is-6"> {extName}</h2>
-        </div>
-      </div>
-    </div>
     <nav className="level is-mobile">
       {/* <div className="level-item has-text-centered">
         <div>
